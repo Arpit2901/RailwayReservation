@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,10 @@ public class RailwayController {
 	public ResponseEntity<List<Train>> getAllTrains(){
 		return  ResponseEntity.ok(this.trainService.getAllTrain());
 	}
-//	@GetMapping
+
+	@GetMapping("/from/{departureS}/to/{arrivalS}")  
+	public ResponseEntity<List<Train>> getTrainFromTo(@PathVariable String departureS, @PathVariable String arrivalS ){
+		return ResponseEntity.ok(this.trainService.getTrainByStation(departureS, arrivalS));
+	}
 
 }

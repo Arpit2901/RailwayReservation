@@ -1,6 +1,7 @@
 package com.railway.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,11 +27,10 @@ public class TrainServiceImpl implements TrainService{
 		return allTrains;
 	}
 
-//	@Override
-//	public Train getTrainByStation(String station) {
-//		Train train=this.dao.FindByStation(station);
-//		return train;
-//	}
+	@Override
+	public List<Train> getTrainByStation(String from,String to) {
+		return dao.findAll().stream().filter(s->s.getdepartureS().contentEquals(from)).filter(e->e.getarrivalS().contentEquals(to)).collect(Collectors.toList());
+	}
 
 	@Override
 	public Train getTrainById(int id) {
@@ -54,5 +54,6 @@ public class TrainServiceImpl implements TrainService{
 		Train deleted=this.dao.getReferenceById(id);
 		this.dao.delete(deleted);
 	}
+
 
 }

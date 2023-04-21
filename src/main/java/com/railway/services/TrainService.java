@@ -10,7 +10,8 @@ public interface TrainService {
 
 	List<Train> getAllTrain();
 
-//	Train getTrainByStation(String station);
+	List<Train> getTrainByStation(String from,String to);
+	
 	Train getTrainById(int id);
 
 	Train updateTrain(Train train, int id);
