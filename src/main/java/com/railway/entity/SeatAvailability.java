@@ -1,12 +1,13 @@
 package com.railway.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "seat_availability")
 public class SeatAvailability {
-
+	@Id
 	private int train_no;
 	private int class_Code;
 	private int number_Of_seats;

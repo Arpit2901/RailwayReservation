@@ -2,19 +2,23 @@ package com.railway.entity;
 
 import java.sql.Date;
 
+
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Ticket_fare")
 public class TicketFare {
 
+	@Id
+	private int class_Id;
 	private Date to_Date;
 	private Date from_Date;
 	private double to_Km;
 	private double from_Km;
 	private int fare;
-	private int class_Id;
 
 	public TicketFare(Date to_Date, Date from_Date, double to_Km, double from_Km, int fare, int class_Id) {
 		super();

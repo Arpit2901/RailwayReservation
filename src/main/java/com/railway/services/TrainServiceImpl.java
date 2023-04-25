@@ -29,7 +29,7 @@ public class TrainServiceImpl implements TrainService{
 
 	@Override
 	public List<Train> getTrainByStation(String from,String to) {
-		return dao.findAll().stream().filter(s->s.getdepartureS().contentEquals(from)).filter(e->e.getarrivalS().contentEquals(to)).collect(Collectors.toList());
+		return dao.findAll().stream().filter(s->s.getDepartureS().contentEquals(from)).filter(e->e.getArrivalS().contentEquals(to)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -42,9 +42,9 @@ public class TrainServiceImpl implements TrainService{
 	public Train updateTrain(Train train, int id) {
 		Train update=this.dao.getReferenceById(id);
 		update.settName(train.gettName());
-		update.setdepartureS(train.getdepartureS());
+		update.setDepartureS(train.getDepartureS());
 		update.settNumber(train.gettNumber());
-		update.setarrivalS(train.getarrivalS());
+		update.setArrivalS(train.getArrivalS());
 		Train updatedTrain=this.dao.save(update);
 		return updatedTrain;
 	}
