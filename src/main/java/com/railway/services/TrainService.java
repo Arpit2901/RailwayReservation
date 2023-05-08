@@ -17,4 +17,6 @@ public interface TrainService {
 	Train updateTrain(Train train, int id);
 
 	void deleteTrain(int id);
+	
+	List<Train> getTrainByName(String name);
 }

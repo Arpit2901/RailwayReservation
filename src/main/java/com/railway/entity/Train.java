@@ -1,7 +1,5 @@
 package com.railway.entity;
 
-
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,14 +25,12 @@ public class Train {
 	private String arrivalS;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "seatDisplay", joinColumns = @JoinColumn(name = "seats", referencedColumnName = "train_no"), inverseJoinColumns = @JoinColumn(name = "Seatavailability", referencedColumnName = "train_no"))
-	private SeatAvailability seats ;
+	@JoinTable(name = "seatDisplay", joinColumns = @JoinColumn(name = "numb", referencedColumnName = "train_no"), inverseJoinColumns = @JoinColumn(name = "Seatavailability", referencedColumnName = "train_no"))
+	private SeatAvailability seats;
 
 	public Train() {
 		super();
 	}
-
-	
 
 	public Train(int tNumber, String tName, int distance, String sTime, String eTime, String departureS,
 			String arrivalS, SeatAvailability seats) {
@@ -49,7 +45,13 @@ public class Train {
 		this.seats = seats;
 	}
 
+	public SeatAvailability getSeats() {
+		return seats;
+	}
 
+	public void setSeats(SeatAvailability seats) {
+		this.seats = seats;
+	}
 
 	public int gettNumber() {
 		return tNumber;
@@ -106,6 +108,5 @@ public class Train {
 	public void setArrivalS(String arrivalS) {
 		this.arrivalS = arrivalS;
 	}
-
 
 }

@@ -9,10 +9,10 @@ import jakarta.persistence.Table;
 public class SeatAvailability {
 	@Id
 	private int train_no;
-	private int class_Code;
+	private String class_Code;
 	private int number_Of_seats;
 
-	public SeatAvailability(int train_no, int class_Code, int number_Of_seats) {
+	public SeatAvailability(int train_no, String class_Code, int number_Of_seats) {
 		super();
 		this.train_no = train_no;
 		this.class_Code = class_Code;
@@ -30,11 +30,11 @@ public class SeatAvailability {
 		this.train_no = train_no;
 	}
 
-	public int getClass_Code() {
+	public String getClass_Code() {
 		return class_Code;
 	}
 
-	public void setClass_Code(int class_Code) {
+	public void setClass_Code(String class_Code) {
 		this.class_Code = class_Code;
 	}
 

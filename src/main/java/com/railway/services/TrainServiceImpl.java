@@ -33,8 +33,12 @@ public class TrainServiceImpl implements TrainService{
 	}
 
 	@Override
+	public List<Train> getTrainByName(String name) {
+		return dao.findAll().stream().filter(s->s.gettName().contentEquals(name)).collect(Collectors.toList());
+	}
+	@Override
 	public Train getTrainById(int id) {
-		Train find=this.dao.getReferenceById(id);
+		Train find=this.dao.findById(id);
 		return find;
 	}
 
@@ -54,6 +58,7 @@ public class TrainServiceImpl implements TrainService{
 		Train deleted=this.dao.getReferenceById(id);
 		this.dao.delete(deleted);
 	}
+
 
 
 }

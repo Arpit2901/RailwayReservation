@@ -41,5 +41,13 @@ public class RailwayController {
 	public ResponseEntity<List<Train>> getTrainFromTo(@PathVariable String departureS, @PathVariable String arrivalS ){
 		return ResponseEntity.ok(this.trainService.getTrainByStation(departureS, arrivalS));
 	}
+	@GetMapping("/{name}")
+	public ResponseEntity<List<Train>> getTrainByName(@PathVariable String name ){
+		return ResponseEntity.ok(this.trainService.getTrainByName(name));
+	}
+	@GetMapping("/id/{id}")
+	public ResponseEntity<Train> getTrainById(@PathVariable int id ){
+		return ResponseEntity.ok(this.trainService.getTrainById(id));
+	}
 
 }
