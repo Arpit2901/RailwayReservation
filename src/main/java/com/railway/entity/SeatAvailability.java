@@ -1,33 +1,35 @@
 package com.railway.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "seat_availability")
 public class SeatAvailability {
 	@Id
-	private int train_no;
+	private int id;
 	private String class_Code;
 	private int number_Of_seats;
-
-	public SeatAvailability(int train_no, String class_Code, int number_Of_seats) {
-		super();
-		this.train_no = train_no;
-		this.class_Code = class_Code;
-		this.number_Of_seats = number_Of_seats;
-	}
 
 	public SeatAvailability() {
 	}
 
-	public int getTrain_no() {
-		return train_no;
+	public SeatAvailability(int id, String class_Code, int number_Of_seats) {
+		super();
+		this.id = id;
+		this.class_Code = class_Code;
+		this.number_Of_seats = number_Of_seats;
 	}
 
-	public void setTrain_no(int train_no) {
-		this.train_no = train_no;
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getClass_Code() {

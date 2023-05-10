@@ -1,5 +1,7 @@
 package com.railway.entity;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,7 +9,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Train {
@@ -24,16 +26,16 @@ public class Train {
 	private String departureS;
 	private String arrivalS;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "seatDisplay", joinColumns = @JoinColumn(name = "numb", referencedColumnName = "train_no"), inverseJoinColumns = @JoinColumn(name = "Seatavailability", referencedColumnName = "train_no"))
-	private SeatAvailability seats;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "seatDisplay", joinColumns = @JoinColumn(name = "numb", referencedColumnName = "train_no"), inverseJoinColumns = @JoinColumn(name = "Seatavailability", referencedColumnName = "id"))
+	private List<SeatAvailability> seats;
 
 	public Train() {
 		super();
 	}
 
 	public Train(int tNumber, String tName, int distance, String sTime, String eTime, String departureS,
-			String arrivalS, SeatAvailability seats) {
+			String arrivalS, List<SeatAvailability> seats) {
 		super();
 		this.tNumber = tNumber;
 		this.tName = tName;
@@ -45,11 +47,11 @@ public class Train {
 		this.seats = seats;
 	}
 
-	public SeatAvailability getSeats() {
+	public List<SeatAvailability> getSeats() {
 		return seats;
 	}
 
-	public void setSeats(SeatAvailability seats) {
+	public void setSeats(List<SeatAvailability> seats) {
 		this.seats = seats;
 	}
 
