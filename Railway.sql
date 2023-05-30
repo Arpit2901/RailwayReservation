@@ -1,9 +1,56 @@
 create database reservation;
 use reservation;
 show tables;
+select * from users;
+select * from roles;
+select * from reservation;
+select * from train_details;
+drop table role;
+
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+
+drop table pay_info;
+
+DELIMITER //
+CREATE PROCEDURE seat_availability(
+@train_no int (10),
+@class_Code varchar(20),
+@number_Of_seats int (10))
+AS
+BEGIN 
+INSERT INTO seat_availability
+    (train_no, class_Code, number_Of_seats)
+    VALUES 
+    (train_no, class_Code, number_Of_seats)
+   IF STATEMENT = "Insert"
+   UPDATE seat_availability
+   SET number_Of_seats = @number_Of_seats -1
+END
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # login
 create table login_credentials ( login_id int primary key, password varchar(8));
+
+#Register
+create table registration ( username varchar(30), password varchar(8),age int, phone numeric, email varchar(30), gender varchar(10)); 
 
 # Ticket Reservation
 create table Ticket_reservation ( PNR_no int primary key, to_date date, from_date varchar(20), to_station varchar(20),
