@@ -18,10 +18,10 @@ Start_Station_Code numeric, End_Station_Code numeric);
 create table ticket_fare (to_date date, from_date date, to_km numeric, from_km numeric, fare int, class_id int);
 
 #Seat Availability
-create table seat_availability (train_no int, class_code int, number_of_seats int);
+create table seat_availability (train_no int, class_code varchar(20), number_of_seats int);
 
-#Class
-create table class (Class_id int primary key, coach_prefix varchar(10), class_code int, Class_name varchar(10), seat_per_coach int);
+-- #Class
+-- create table class (Class_id int primary key, coach_prefix varchar(10), class_code int, Class_name varchar(10), seat_per_coach int);
 
 #Station
 create table station (station_id int primary key, station_code int, station_name varchar(20));
